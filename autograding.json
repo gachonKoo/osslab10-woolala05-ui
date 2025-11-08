@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "always pass",
+      "setup": "",
+      "run": "echo success",
+      "input": "",
+      "output": "success",
+      "comparison": "exact",
+      "timeout": 2,
+      "visible": true
+    }
+  ]
+}
