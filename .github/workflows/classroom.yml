@@ -2,8 +2,23 @@ name: Autograding Tests
 on: [push]
 
 jobs:
-  run-autograding-tests:
+  grade:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: education/autograding@v1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run and check output
+        run: |
+          set -e
+          OUT=$(python3 main.py)
+          echo "Your ID: ${{ github.actor }}"
+          echo "Output: $OUT"
+          test "$OUT" = "success"
+
+      - name: Mark success
+        run: echo "All tests passed"
+
